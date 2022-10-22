@@ -6,3 +6,11 @@ V:\Projects\asp.net\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.SuggestedBindingRed
 V:\Projects\asp.net\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
 V:\Projects\asp.net\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 V:\Projects\asp.net\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+D:\Projects\.net\Tasks-from-Jusan-Garant-main\bin\Debug\ConsoleApp1.exe.config
+D:\Projects\.net\Tasks-from-Jusan-Garant-main\bin\Debug\ConsoleApp1.exe
+D:\Projects\.net\Tasks-from-Jusan-Garant-main\bin\Debug\ConsoleApp1.pdb
+D:\Projects\.net\Tasks-from-Jusan-Garant-main\obj\Debug\ConsoleApp1.csproj.AssemblyReference.cache
+D:\Projects\.net\Tasks-from-Jusan-Garant-main\obj\Debug\ConsoleApp1.csproj.SuggestedBindingRedirects.cache
+D:\Projects\.net\Tasks-from-Jusan-Garant-main\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+D:\Projects\.net\Tasks-from-Jusan-Garant-main\obj\Debug\ConsoleApp1.exe
+D:\Projects\.net\Tasks-from-Jusan-Garant-main\obj\Debug\ConsoleApp1.pdb

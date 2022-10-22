@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace ConsoleApp1
 {
@@ -17,28 +17,25 @@ namespace ConsoleApp1
             //Юр.лица могут иметь список контактных лиц, которые являются физ. лицами.
             //Сделать вывод 5 записей из списка юр. лиц.Упорядочить список юр.лиц по количеству контактных лиц(по убыванию).
 
-            NaturalPerson naturalPerson = new NaturalPerson(1, "00000000", new DateTime(1995, 3, 11), "Имя", "Отчество", "Фамилия");
-            NaturalPerson naturalPerson1 = new NaturalPerson(2, "00000001", new DateTime(2000, 5, 31), "Руслан", "Николаевич", "Попов");
-            NaturalPerson naturalPerson2 = new NaturalPerson(3, "00000002", new DateTime(1989, 2, 12), "Диана", "Сергеевна", "Денисова");
-            List<NaturalPerson> naturalPeople = new List<NaturalPerson>
-            {
-                naturalPerson, naturalPerson1, naturalPerson2  
-            };
-            
-            LegalEntity legalEntity = new LegalEntity(1, "00000003", new DateTime(1999, 12, 1), "Наименование 1");
-            LegalEntity legalEntity1 = new LegalEntity(2, "00000004", new DateTime(1988, 6, 4), "Имя 2");
-            LegalEntity legalEntity2 = new LegalEntity(3, "00000005", new DateTime(1989, 10, 10), "Юр. имя 3");
-            List<LegalEntity> legalEntities = new List<LegalEntity>
-            {
-                legalEntity, legalEntity1, legalEntity2
-            };
-             
+            NaturalPerson naturalPerson = new NaturalPerson();
+            List<NaturalPerson> allNaturalPeople = naturalPerson.GetPersonFromFile("NaturalPeople.txt")
+                .OrderBy(col => col.LastName)
+                .ThenBy(prop => prop.FirstName)
+                .ThenBy(prop => prop.MiddleName).ToList();
 
-            foreach(var person in naturalPeople)
-            Console.WriteLine($"{person.LastName} {person.FirstName} {person.MiddleName}");
+            Console.WriteLine("View all sorded users: ");
+            foreach (var user in allNaturalPeople)
+            {
+                Console.WriteLine($"{user.LastName} {user.FirstName} {user.MiddleName}");
+            }
+
+            LegalEntity legalEntity = new LegalEntity();
+            List<LegalEntity> allLegalEntity = legalEntity.GetEntitiesFromFile("LegalEntity.txt");
+            
             //////// 2. Понимание кода. Случай из реальной практики
-            // В коде нет ошибок т.к. 2020 год является весокосным и он допускает 29 февраля
+            // В коде нет ошибок т.к. 2020 год является високосным и он допускает 29 февраля
             // Однако я бы поставил обработчик событии на введенную дату (feb) и сократил return до 1 строки
+            // Я думаю ошибка разработчика является явное указание feb в методе, а не получение его в качестве параметра метода
 
             //DateTime feb;
             //try

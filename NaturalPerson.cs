@@ -1,33 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace ConsoleApp1
 {
+
     internal class NaturalPerson : Counterparty
-    {
-        private int Id { get; set; }
-        private string BIN_IIN { get; set; }
-        private DateTime DateCreate { get; set; }
-
-        public  string FirstName { get; set; }
+    {  
+        public string FirstName { get; set; }
         public string MiddleName { get; set; }
-        public string LastName { get; set; }
+        public string LastName { get; set; }  
 
-        public NaturalPerson(int id, string bin_iin, DateTime dateCreate, string firstName, string middleName, string lastName) : base(id, bin_iin, dateCreate)
-        {
-            Id = id;
-            BIN_IIN = bin_iin;
-            DateCreate = dateCreate;
+        public NaturalPerson() { 
+            
+        } 
 
-            FirstName = firstName;
-            MiddleName = middleName;
-            LastName = lastName;
-        }
-
-        public List<NaturalPerson> ViewSortedNaturalPersons(List<NaturalPerson> naturalPeople)
-        {
-            return naturalPeople.OrderBy(col => col.LastName).ThenBy(prop => prop.FirstName).ThenBy(prop => prop.MiddleName).ToList();
+        public List<NaturalPerson> GetPersonFromFile(string filePath)
+        { 
+            if (!IsFileExtensionValid(filePath))
+            {
+                throw new Exception("File extension error");
+            }
+            List<NaturalPerson> naturalPeople = new List<NaturalPerson>();
+            var lines = File.ReadLines(filePath);
+            foreach (var line in lines)
+            {
+                var person = new NaturalPerson();
+                var items = line.Split('|');
+                for (int i =0; i < items.Length; i++)
+                {
+                    person.BIN_IIN = items[0];
+                    person.DateCreate = Convert.ToDateTime(items[1]);
+                    person.FirstName = items[2].Split(' ')[0];
+                    person.MiddleName = items[2].Split(' ')[2];
+                    person.LastName = items[2].Split(' ')[1];
+                }
+                naturalPeople.Add(person);
+            }
+            return naturalPeople;
         }
     }
 }
