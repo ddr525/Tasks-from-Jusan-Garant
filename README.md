@@ -26,7 +26,7 @@ catch (ArgumentOutOfRangeException)
 {
     userPoliceDate = new DateTime(2020, 3, 1);
 }
-return feb >= dateStart && feb <= dateEnd;
+return userPoliceDate >= dateStart && userPoliceDate <= dateEnd;
 ```
 
 ## 3.1 Есть три таблицы: CUSTOMERS (ID, NAME, MANAGER_ID); MANAGERS (ID, NAME); ORDERS (ID, DATE, AMOUNT, CUSTOMER_ID). Написать запрос, который выведет имена Customers и их SalesManagers, которые сделали покупок на общую сумму больше 10000 с 01.01.2013.
